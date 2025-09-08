@@ -1,0 +1,24 @@
+Destruturing, Spread operator, template literals , ternaries
+Promises
+Async / await
+Map, filter, reduce, sort.
+
+
+Softwares :
+Quokka - to see values like prompts.
+eslint - complier time error and suggestions
+
+
+Main elements : 
+
+Components, Props, JSX
+
+Components : - Data, logic and Apperance
+    React app are entirely made of components like building block of UI.
+    We build complex UIs by building multiple components and combining them.
+    Components can be reused, nested inside each other and pass data between them.
+
+JSX : - JavaScript, CSS and HTML
+    Declarative syntax to describe whata component look like and how they work
+    Components must return a block of JSX
+    Each JSX element is converted to a React.createElement function call. 
