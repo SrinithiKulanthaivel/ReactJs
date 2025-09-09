@@ -22,3 +22,12 @@ JSX : - JavaScript, CSS and HTML
     Declarative syntax to describe whata component look like and how they work
     Components must return a block of JSX
     Each JSX element is converted to a React.createElement function call. 
+
+Props : - Used to transfer data from parent to child component. Immutable. 
+    we can pass any data as Props like list, object, String, number,...
+
+State : - holds single local component variable.
+    Data that a component can hold over time, like remember throughtout the apps lifecycle.
+    Updating component state triggerss react to re-render the component.
+    Update the componet view everytime, when there is a change.
+    Persist local variable between render.
