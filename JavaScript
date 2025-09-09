@@ -7,6 +7,7 @@ Map, filter, reduce, sort.
 Softwares :
 Quokka - to see values like prompts.
 eslint - complier time error and suggestions
+react-developer tool - to see the component details in console.
 
 
 Main elements : 
@@ -29,5 +30,6 @@ Props : - Used to transfer data from parent to child component. Immutable.
 State : - holds single local component variable.
     Data that a component can hold over time, like remember throughtout the apps lifecycle.
     Updating component state triggerss react to re-render the component.
+    State needs to be place in High level function and not inside of the other sub functions.
     Update the componet view everytime, when there is a change.
     Persist local variable between render.
