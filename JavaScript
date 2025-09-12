@@ -18,6 +18,17 @@ Components : - Data, logic and Apperance
     React app are entirely made of components like building block of UI.
     We build complex UIs by building multiple components and combining them.
     Components can be reused, nested inside each other and pass data between them.
+    Component Composition: Combining different component using "children " prop. it is like reducing the tight coupling.
+        eg: <Model />
+        function Model(){
+        <> <Success /> </> - here Model componet is tightly packed with Success and we cannot pass anyother.
+        }
+or 
+        <Model > <Success /> </Model>
+        <Model > <Error /> </Model>
+        function Model({children}){
+        <> {children} </> - Here we can pass anything, losely coupling.
+        }
 
 JSX : - JavaScript, CSS and HTML
     Declarative syntax to describe whata component look like and how they work
