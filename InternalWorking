@@ -15,12 +15,17 @@ Calling a Component - usually we are calling a function but we need to use </> i
 
 How Internally the react works
 
+Three Phase in React:
+    * Trigger Phase (created) or (state update)
+    * Render Phase (Based on state update it will create the new updated DOM)(Asynchronous it will randomly check and update all the component)
+    * Commit Phase (UpdatedDOM will be finally commited and reflect in UI) (Synchronous, it will commit the updated DOM)
+
     Component Instance -> return elements  -----stateUpdate------> New Virtual DOM
                         -> Current Fibertree(Before state Update) ie - it has all the components state, props, values,...
-        -> Reconciliation + Diffing --------> New VirtualDOM + Current FiberTree  -------> UpdatedFiberTree  -------> UI
+        -> Reconciliation + Diffing --------> New VirtualDOM + Current FiberTree  -------> UpdatedFiberTree  ------->(Commit) UI
 
 Wroking flow 
-  1. Intially component -> compoent Instance -> return element -> DOM (writes to UI)
+  1. Intially component -> compoent Instance -> return element -> UpdatedDOM  -> Commit(writes to UI)
   2. When state got updated, then react wont update all the componet, it will udpate the Component and its child component. 
   3. Initially it will create the FiberTree
   4. Then when a state got updated, it will create a virtual DOM, with Component and its child component.
@@ -32,4 +37,39 @@ Wroking flow
   6. Finally write the content to the Physical DOM - Writes in the UI.
 
 
+Diffing Rule  : 
+    Same element different position - everytime component will be deleted and new one will be created
+    Same element Same Position - The DOM element and state will kept same and it wont change.
+
+Eg: for drawbacks / fix (using Key)
+  1. Same element Different Position. - in the below example if we a new element q[0], then it will delete all the component and create newly. bad practise
+      <>
+      <Question question ={q[1]}/>
+      <Question question ={q[2]}/>
+      </>
+      <>
+      <Question question ={q[0]}/> --- without key , it will delete all the existing element and create newly
+      <Question question ={q[1]}/>
+      <Question question ={q[2]}/>
+      </>
+      <>
+      <Question key = 'q1'question ={q[0]}/> --- with key , it wont delete all the element, it just create the new element.
+      <Question key = 'q2' question ={q[1]}/>
+      <Question key = 'q3' question ={q[2]}/>
+      </>
+
+  2. Same Element Same Position - it won't change the state, give same state to all the element
+      <>
+      <Question  question ={title : 'why react'/> - answer - to do changes in UI
+      </>
+      <>
+      <Question  question ={title : 'what is the advantage of react'/> - answer - to do changes in UI
+      </>
+if we add key, then it will reset the state for each key.
+      <>
+      <Question key ='q1' question ={title : 'why react'/> - answer - to do changes in UI
+      </>
+      <>
+      <Question key ='q2' question ={title : 'what is the advantage of react'/> - answer - to do changes in UI
+      </>
 
