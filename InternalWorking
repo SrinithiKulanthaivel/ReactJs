@@ -1,0 +1,35 @@
+Component / Instance / Element
+  Componet  -> Component Instance -> React Elements  -> DOM Elements
+  eg : function Tab{return something} -> <Tab />, <Tab />  -> return Something  -> Finally in the UI DOM
+
+Component - Description of piece of UI
+  It is a function which returns React elements (JSX)
+  Buleprint or template.
+Instance - Instance are created when we use component
+  Has its own state and props 
+  And lifecycle (create, live & die)
+
+Calling a Component - usually we are calling a function but we need to use </> instead of ().
+  <Tab /> - React will treat as a component
+  Tab() - React will not treat as a component, just as a another elements. 
+
+How Internally the react works
+
+    Component Instance -> return elements  -----stateUpdate------> New Virtual DOM
+                        -> Current Fibertree(Before state Update) ie - it has all the components state, props, values,...
+        -> Reconciliation + Diffing --------> New VirtualDOM + Current FiberTree  -------> UpdatedFiberTree  -------> UI
+
+Wroking flow 
+  1. Intially component -> compoent Instance -> return element -> DOM (writes to UI)
+  2. When state got updated, then react wont update all the componet, it will udpate the Component and its child component. 
+  3. Initially it will create the FiberTree
+  4. Then when a state got updated, it will create a virtual DOM, with Component and its child component.
+  5. Then in reconciliation, it will check with current FiberTree and Virtual DOM, and only change the element which got updated. 
+      (component & child means, it wont update all the child blankly, it will updatee only the child got affected)
+      VirtualDOM - Component & all child
+      FiberTree - have the details of all the componet before state update
+      Reconciliation - Compare both VirtualDOM + FiberTree and update only the child component whose value got updated.
+  6. Finally write the content to the Physical DOM - Writes in the UI.
+
+
+
